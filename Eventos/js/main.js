@@ -1,0 +1,18 @@
+const vm = new Vue({
+  el:'main',
+  data: {
+    nuevaTarea: null,
+    tareas: [
+      'Aprender Vue.js',
+      'Aprender ES6',
+      'Programar algo todos los días'
+  ]
+  },
+  methods: {
+    agregarTarea() {
+      this.tareas.unshift(this.nuevaTarea);
+      this.nuevaTarea = null
+    }
+    
+  },
+});
