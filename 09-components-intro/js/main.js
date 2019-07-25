@@ -1,16 +1,18 @@
 Vue.component('mis-tareas', {
-    
-});
-
-new Vue({
-    el: 'main',
+    template:`<ul><li v-for="task in tareas">{{ task.title }}</li></ul>`,
     mounted() {
         axios.get('https://jsonplaceholder.typicode.com/todos')
             .then((respuesta) => {
                 this.tareas = respuesta.data;
             });
     },
-    data: {
-        tareas: [],
+    data() {
+        return {
+            tareas: [],
+        }
     }
+});
+
+new Vue({
+    el: 'main',
 });

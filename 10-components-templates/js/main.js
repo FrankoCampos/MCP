@@ -1,12 +1,17 @@
 Vue.component('elegir-ganador', {
-    props: [],
-
+    props: ['listado'],
+    template: '#elegir-ganador-template',
     methods: {
-
+        elegirGanador() {
+            let cantidad = this.participantes.length;
+            let indice = Math.floor((Math.random() * cantidad));
+            this.ganador = this.participantes[indice - 1];
+        }
     },
     data() {
         return {
-
+            ganador: false,
+            participantes: this.listado
         }
     },
 });
