@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import Vue from 'vue'
 export default {
   state: {
     create_user_dialog: false,
@@ -141,12 +141,16 @@ export default {
         .post(`/users/login`, passport)
         .then(response => {
           //console.log("RESP_LOGIN",response);
+          console.log("RESP_LOGIN", response.status);
+          Vue.swal('Success!!!');
           commit('SET_API_RESPONSE', { status: response.status, data: response.data });
           commit('SET_LOADER', { status: false, message: "Exitoso" });
           commit('SET_USER_LOGIN', response.data);
         })
         .catch(error => {
           //console.error("ERROR_POST_LOGIN",error);
+          console.log("ERROR_POST_LOGIN", error.response.status);
+          Vue.swal('Error!!!');
           commit('SET_API_RESPONSE', { status: error.response.status, data: error.response.data });
           commit('SET_LOADER', { status: false, message: "Error" });
         });
